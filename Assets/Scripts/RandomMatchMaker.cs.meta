@@ -3,7 +3,8 @@ guid: 9a1077730bedb441f86a1743360aef69
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - PhotonObject: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

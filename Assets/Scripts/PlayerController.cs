@@ -13,7 +13,11 @@ public class PlayerController : Photon.Pun.MonoBehaviourPun
    
     void Start()
     {
-
+        refCamera = FindObjectOfType<KeyCameraController>();
+        if (refCamera == null)
+        {
+            Debug.LogError("KeyCameraControllerが見つかりません");
+        }
     }
 
     void Update()
