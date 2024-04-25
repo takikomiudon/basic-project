@@ -13,7 +13,7 @@ public class PlayerController : Photon.Pun.MonoBehaviourPun
    
     void Start()
     {
-
+        refCamera = FindObjectOfType<KeyCameraController>();
     }
 
     void Update()
