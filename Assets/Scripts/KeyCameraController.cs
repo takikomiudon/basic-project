@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
-public class KeyCameraController : MonoBehaviour
+public class KeyCameraController : MonoBehaviourPun
 {
     public float turnSpeed = 10.0f;   // 回転速度
     public Transform player;          // 対象プレイヤー
@@ -11,16 +12,25 @@ public class KeyCameraController : MonoBehaviour
     [System.NonSerialized] public Quaternion hRotation;      // 水平回転
     public float camx = 30f;  //垂直回転の初期値
 
+    private PhotonView photonView;
+
     void Start()
     {
-        vRotation = Quaternion.Euler(camx, 0, 0);         
-        hRotation = Quaternion.identity;               
-        transform.rotation = hRotation * vRotation;     
-        transform.position = player.position - transform.rotation * Vector3.forward * distance;
+        photonView = GetComponent<PhotonView>();
+        if (photonView.IsMine)
+        {
+            vRotation = Quaternion.Euler(camx, 0, 0);         
+            hRotation = Quaternion.identity;               
+            transform.rotation = hRotation * vRotation;     
+            transform.position = player.position - transform.rotation * Vector3.forward * distance;
+        }
     }
 
     void Update()
     {
-        transform.position = player.position + new Vector3(0, 3, 0) - transform.rotation * Vector3.forward * distance;
+        if (photonView.IsMine && player != null && photonView != null)
+        {
+            transform.position = player.position + new Vector3(0, 3, 0) - transform.rotation * Vector3.forward * distance;
+        }
    }
 }
