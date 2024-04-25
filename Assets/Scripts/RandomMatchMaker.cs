@@ -34,7 +34,7 @@ public class RandomMatchMaker : MonoBehaviourPunCallbacks
 
     public override void OnJoinedRoom()
     {
-        GameObject player = PhotonNetwork.Instantiate(PhotonObject.name, new Vector3(0, 0, 0), Quaternion.identity);
+        GameObject player = PhotonNetwork.Instantiate(PhotonObject.name, new Vector3(0, 0, -10), Quaternion.identity);
         if (player.GetComponent<PlayerController>().photonView.IsMine)
         {
             MainCamera.player = player.transform;
