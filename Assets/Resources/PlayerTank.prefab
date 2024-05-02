@@ -498,6 +498,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shellPrefab: {fileID: 7109003480461348574, guid: bc92ad7308dbf49f5861670a30867b03, type: 3}
   shotSpeed: 1000
+  remainShoot: 6
 --- !u!1 &5336086918293795142
 GameObject:
   m_ObjectHideFlags: 0
