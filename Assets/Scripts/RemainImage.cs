@@ -6,16 +6,18 @@ using UnityEngine.UI;
 public class RemainImage : MonoBehaviour
 {
     public Image UIobj;
-    float remain =  ShootShell.remainShoot;
+    public ShootShell shootshell;
+    float remain;
+
+    
 
     // Start is called before the first frame update
     void Start()
     {
         //ShootShell shootshell = GetComponent<ShootShell>();
-        
-
-        
-        Debug.Log("start remain " + remain);
+        shootshell = FindObjectOfType<ShootShell>();
+        remain = shootshell.remainShoot;
+        Debug.Log("start");
     }
 
     // Update is called once per frame
@@ -28,10 +30,10 @@ public class RemainImage : MonoBehaviour
         //float remain = shootshell.remainShoot;
         //remain = ShootShell.remainShoot;
 
-        Debug.Log("update remain "+remain);
-        
+        //Debug.Log("update remain "+remain);
+
         // 取得した値を使ってUIobjのfillAmountを設定する
-        UIobj.fillAmount = remain / 6;
+        //UIobj.fillAmount = remain / 6;
     }
 
 
