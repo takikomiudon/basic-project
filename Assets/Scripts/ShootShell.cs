@@ -33,7 +33,13 @@ public class ShootShell : Photon.Pun.MonoBehaviourPun
             shell.GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.LocalPlayer);
 
             //弾を任意の秒数で消します。
-            PhotonNetwork.Destroy(shell, 5.0f);
+            StartCoroutine(DestroyShellAfterTime(shell, 5));
         }
+    }
+
+    IEnumerator DestroyShellAfterTime(GameObject shell, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        PhotonNetwork.Destroy(shell);
     }
 }
