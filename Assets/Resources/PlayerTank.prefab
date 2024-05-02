@@ -660,7 +660,6 @@ GameObject:
   - component: {fileID: 4580041981170552513}
   - component: {fileID: 9077645128866443475}
   - component: {fileID: 769563188798513824}
-  - component: {fileID: 6398810899493246677}
   m_Layer: 0
   m_Name: PlayerTank
   m_TagString: Untagged
@@ -798,32 +797,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.9, y: 2.0833614, z: 1.9}
   m_Center: {x: -0.000000059604645, y: 0.25872552, z: -0.085446835}
---- !u!114 &6398810899493246677
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5336086918293795142}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 613028b829ba7425699d301891b81e77, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canon: {fileID: 636883874405053261}
-  tower: {fileID: 181818077799470962}
-  velocity: {x: 0, y: 0, z: 0}
-  moveSpeed: 5
-  applySpeed: 0.2
-  refCamera: {fileID: 0}
-  life: {fileID: 1675011160454167896}
-  renderer_body: {fileID: 8808128122493214712}
-  renderer_head: {fileID: 7479840771013675249}
-  renderer_cannon: {fileID: 242027601945640022}
-  renderer_tirebl: {fileID: 5870523217571369618}
-  renderer_tirebr: {fileID: 9063836892173350887}
-  renderer_tirefl: {fileID: 0}
-  renderer_tirefr: {fileID: 0}
 --- !u!1 &5461544126743618544
 GameObject:
   m_ObjectHideFlags: 0

@@ -68,13 +68,16 @@ public class PlayerController : Photon.Pun.MonoBehaviourPun
         Debug.Log("syoutotu");
         if (collision.gameObject.name == "Red Ball(Clone)")
         {
+            Debug.Log("red ball");
             if (!isBlinking)
             {
+                Debug.Log("zanki");
                 // 名前が "name" のオブジェクトに当たった場合、TextMeshProの数値を1減らす
                 int currentValue = int.Parse(life.text);
                 life.text = (currentValue - 1).ToString();
                 // オブジェクトを点滅させるコルーチンを開始
                 StartCoroutine(BlinkObject(2f));
+                Debug.Log(isBlinking);
             }
 
         }
