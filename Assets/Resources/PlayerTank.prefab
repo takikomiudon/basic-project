@@ -697,8 +697,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 613028b829ba7425699d301891b81e77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canon: {fileID: 0}
-  tower: {fileID: 0}
+  canon: {fileID: 636883874405053261}
+  tower: {fileID: 181818077799470962}
   velocity: {x: 0, y: 0, z: 0}
   moveSpeed: 5
   applySpeed: 0.2

@@ -21,6 +21,8 @@ public class PlayerController : Photon.Pun.MonoBehaviourPun
     public Renderer renderer_tirefl;
     public Renderer renderer_tirefr;
 
+    bool if_1 = true;
+
     void Start()
     {
         refCamera = FindObjectOfType<KeyCameraController>();
@@ -63,6 +65,7 @@ public class PlayerController : Photon.Pun.MonoBehaviourPun
     // 当たった時に呼ばれる関数
     void OnCollisionEnter(Collision collision)
     {
+        Debug.Log("syoutotu");
         if (collision.gameObject.name == "Red Ball(Clone)")
         {
             if (!isBlinking)
