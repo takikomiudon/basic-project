@@ -23,15 +23,15 @@ public class ShootShell : Photon.Pun.MonoBehaviourPun
             return;
         }
 
-        //remainShootを増やす　最大6
+        //remainShootを増やす　最大4
         remainShoot += Time.deltaTime;
-        if (remainShoot >= 6)
+        if (remainShoot >= 4)
         {
-            remainShoot = 6;
+            remainShoot = 4;
         }
 
         //弾を打つ
-        if (remainShoot > 0 && Input.GetKeyDown(KeyCode.Space))
+        if (remainShoot > 1 && Input.GetKeyDown(KeyCode.Space))
         {
             //弾を発生させます
             GameObject shell = PhotonNetwork.Instantiate("Red Ball", transform.position, Quaternion.identity) as GameObject;
@@ -45,7 +45,7 @@ public class ShootShell : Photon.Pun.MonoBehaviourPun
             shell.GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.LocalPlayer);
 
             //弾を任意の秒数で消します。
-            StartCoroutine(DestroyShellAfterTime(shell, 5));
+            StartCoroutine(DestroyShellAfterTime(shell, 1.5f));
         }
     }
 

@@ -28,7 +28,7 @@ public class RemainImage : MonoBehaviour
         remain = shootshell.remainShoot;
 
         // 取得した値を使ってUIobjのfillAmountを設定する
-        UIobj.fillAmount = remain / 6;
+        UIobj.fillAmount = remain / 4;
     }
 
 
