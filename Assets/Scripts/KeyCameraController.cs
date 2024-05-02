@@ -28,6 +28,7 @@ public class KeyCameraController : MonoBehaviourPun
 
     void Update()
     {
+        transform.rotation = Quaternion.Euler(camx, player.eulerAngles.y + 180, 0);
         transform.position = player.position + new Vector3(0, 3, 0) - transform.rotation * Vector3.forward * distance;
    }
 }

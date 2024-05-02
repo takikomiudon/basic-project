@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PlayerController : Photon.Pun.MonoBehaviourPun
 {
@@ -10,11 +11,73 @@ public class PlayerController : Photon.Pun.MonoBehaviourPun
     public float moveSpeed = 5.0f;        // 移動速度
     public float applySpeed = 0.2f;       // 振向速度
     public KeyCameraController refCamera;  // カメラ参照
-   
+    public TextMeshProUGUI life;
+    private bool isBlinking = false;
+    public Renderer renderer_body;
+    public Renderer renderer_head;
+    public Renderer renderer_cannon;
+    public Renderer renderer_tirebl;
+    public Renderer renderer_tirebr;
+    public Renderer renderer_tirefl;
+    public Renderer renderer_tirefr;
+
     void Start()
     {
         refCamera = FindObjectOfType<KeyCameraController>();
     }
+
+    IEnumerator BlinkObject(float duration)
+    {
+        isBlinking = true;
+        float elapsedTime = 0f;
+
+        while (elapsedTime < duration)
+        {
+            // オブジェクトの表示/非表示を交互に切り替えることで点滅を実現
+            renderer_body.enabled = !renderer_body.enabled;
+            renderer_head.enabled = !renderer_head.enabled;
+            renderer_cannon.enabled = !renderer_cannon.enabled;
+            renderer_tirebl.enabled = !renderer_tirebl.enabled;
+            renderer_tirebr.enabled = !renderer_tirebr.enabled;
+            renderer_tirefl.enabled = !renderer_tirefl.enabled;
+            renderer_tirefr.enabled = !renderer_tirefr.enabled;
+            
+
+            // 0.1秒待機
+            yield return new WaitForSeconds(0.1f);
+            elapsedTime += 0.1f;
+        }
+
+        // 点滅が終了した後、オブジェクトの表示を元に戻す
+        renderer_body.enabled = true;
+        renderer_head.enabled = true;
+        renderer_cannon.enabled = true;
+        renderer_tirebl.enabled = true;
+        renderer_tirebr.enabled = true;
+        renderer_tirefl.enabled = true;
+        renderer_tirefr.enabled = true;
+
+        isBlinking = false;
+    }
+
+    // 当たった時に呼ばれる関数
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.name == "Red Ball(Clone)")
+        {
+            if (!isBlinking)
+            {
+                // 名前が "name" のオブジェクトに当たった場合、TextMeshProの数値を1減らす
+                int currentValue = int.Parse(life.text);
+                life.text = (currentValue - 1).ToString();
+                // オブジェクトを点滅させるコルーチンを開始
+                StartCoroutine(BlinkObject(2f));
+            }
+
+        }
+    }
+
+
 
     void Update()
     {
@@ -22,27 +85,33 @@ public class PlayerController : Photon.Pun.MonoBehaviourPun
         {
             return;
         }
-        // 移動の設定
-        velocity = velocity.normalized * moveSpeed * Time.deltaTime;
 
-        if (velocity.magnitude > 0)
-        {
-            transform.rotation = Quaternion.Slerp(transform.rotation,
-                                                  Quaternion.LookRotation(refCamera.hRotation * -velocity),
-                                                  applySpeed);
-            transform.position += refCamera.hRotation * velocity;
-        }
+        if (Input.GetKey(KeyCode.A))
+            transform.Rotate(0, -60 * Time.deltaTime, 0);
+        if (Input.GetKey(KeyCode.D))
+            transform.Rotate(0, 60 * Time.deltaTime, 0);
+
+        Vector3 rotation = transform.eulerAngles;
+        rotation.x = 0;
+        rotation.z = 0;
+        transform.eulerAngles = rotation;
 
         // 移動WASD入力
         velocity = Vector3.zero;
         if (Input.GetKey(KeyCode.W))
-            velocity.z += 1;
-        if (Input.GetKey(KeyCode.A))
-            velocity.x -= 1;
+            velocity -= transform.forward;
         if (Input.GetKey(KeyCode.S))
-            velocity.z -= 1;
-        if (Input.GetKey(KeyCode.D))
-            velocity.x += 1;
+            velocity += transform.forward;
+
+        velocity = refCamera.hRotation * velocity;
+        velocity.y = 0;
+
+        // 移動の設定
+        if (velocity.magnitude > 0)
+        {
+            velocity = velocity.normalized * moveSpeed * Time.deltaTime;
+            transform.position += velocity;
+        }
 
         //砲台とキャノンの角度QWZCでコントロール
         if (Input.GetKey(KeyCode.Q))
