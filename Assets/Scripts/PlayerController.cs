@@ -41,6 +41,7 @@ public class PlayerController : Photon.Pun.MonoBehaviourPun
             renderer_tirebr.enabled = !renderer_tirebr.enabled;
             renderer_tirefl.enabled = !renderer_tirefl.enabled;
             renderer_tirefr.enabled = !renderer_tirefr.enabled;
+            
 
             // 0.1秒待機
             yield return new WaitForSeconds(0.1f);
