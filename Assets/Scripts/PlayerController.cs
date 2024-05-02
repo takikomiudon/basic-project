@@ -84,27 +84,33 @@ public class PlayerController : Photon.Pun.MonoBehaviourPun
         {
             return;
         }
-        // 移動の設定
-        velocity = velocity.normalized * moveSpeed * Time.deltaTime;
 
-        if (velocity.magnitude > 0)
-        {
-            transform.rotation = Quaternion.Slerp(transform.rotation,
-                                                  Quaternion.LookRotation(refCamera.hRotation * -velocity),
-                                                  applySpeed);
-            transform.position += refCamera.hRotation * velocity;
-        }
+        if (Input.GetKey(KeyCode.A))
+            transform.Rotate(0, -60 * Time.deltaTime, 0);
+        if (Input.GetKey(KeyCode.D))
+            transform.Rotate(0, 60 * Time.deltaTime, 0);
+
+        Vector3 rotation = transform.eulerAngles;
+        rotation.x = 0;
+        rotation.z = 0;
+        transform.eulerAngles = rotation;
 
         // 移動WASD入力
         velocity = Vector3.zero;
         if (Input.GetKey(KeyCode.W))
-            velocity.z += 1;
-        if (Input.GetKey(KeyCode.A))
-            velocity.x -= 1;
+            velocity -= transform.forward;
         if (Input.GetKey(KeyCode.S))
-            velocity.z -= 1;
-        if (Input.GetKey(KeyCode.D))
-            velocity.x += 1;
+            velocity += transform.forward;
+
+        velocity = refCamera.hRotation * velocity;
+        velocity.y = 0;
+
+        // 移動の設定
+        if (velocity.magnitude > 0)
+        {
+            velocity = velocity.normalized * moveSpeed * Time.deltaTime;
+            transform.position += velocity;
+        }
 
         //砲台とキャノンの角度QWZCでコントロール
         if (Input.GetKey(KeyCode.Q))
