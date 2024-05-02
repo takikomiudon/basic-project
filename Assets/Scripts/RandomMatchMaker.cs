@@ -32,9 +32,38 @@ public class RandomMatchMaker : MonoBehaviourPunCallbacks
         PhotonNetwork.CreateRoom(null, roomOptions);
     }
 
+    // Tunkの発生場所をランダムに生成。
+    Vector3 GenerateSpawnPosition()
+    {
+        float x = Random.Range(0, 200); // 0 から 200 までのランダムな値を生成
+        Vector3 position;
+
+        if (x < 55)
+        {
+            position = new Vector3(x - 33, 5, -13);
+        }
+        else if (x < 100)
+        {
+            position = new Vector3(22, 5, x - 68);
+        }
+        else if (x < 155)
+        {
+            position = new Vector3(x - 133, 5, 32);
+        }
+        else // x is between 155 and 200
+        {
+            position = new Vector3(-33, 5, x - 168);
+        }
+
+        return position;
+    }
+
+
     public override void OnJoinedRoom()
     {
-        GameObject player = PhotonNetwork.Instantiate(PhotonObject.name, new Vector3(0, 0, -10), Quaternion.identity);
+        Vector3 spawnPosition = GenerateSpawnPosition(); // ランダムなスポーン位置を取得
+
+        GameObject player = PhotonNetwork.Instantiate(PhotonObject.name, spawnPosition, Quaternion.identity);
         if (player.GetComponent<PlayerController>().photonView.IsMine)
         {
             MainCamera.player = player.transform;
