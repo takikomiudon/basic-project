@@ -722,8 +722,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shellPrefab: {fileID: 7109003480461348574, guid: bc92ad7308dbf49f5861670a30867b03, type: 3}
-  shotSpeed: 1000
-  remainShoot: 6
+  shotSpeed: 1500
+  remainShoot: 3
 --- !u!114 &5747225561194879600
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -790,7 +790,7 @@ MonoBehaviour:
   canon: {fileID: 636883874405053261}
   tower: {fileID: 181818077799470962}
   velocity: {x: 0, y: 0, z: 0}
-  moveSpeed: 5
+  moveSpeed: 10
   applySpeed: 0.2
   refCamera: {fileID: 0}
   life: {fileID: 1675011160454167896}
