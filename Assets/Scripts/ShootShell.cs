@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class ShootShell : Photon.Pun.MonoBehaviourPun
 {
@@ -33,7 +34,7 @@ public class ShootShell : Photon.Pun.MonoBehaviourPun
         if (remainShoot > 0 && Input.GetKeyDown(KeyCode.Space))
         {
             //弾を発生させます
-            GameObject shell = Instantiate(shellPrefab, transform.position, Quaternion.identity) as GameObject;
+            GameObject shell = PhotonNetwork.Instantiate("Red Ball", transform.position, Quaternion.identity) as GameObject;
 
             //弾に発射の力を加えます
             Rigidbody shellRigidbody = shell.GetComponent<Rigidbody>();
@@ -41,9 +42,16 @@ public class ShootShell : Photon.Pun.MonoBehaviourPun
 
             //remainShootを減らす
             remainShoot = remainShoot - 1;
+            shell.GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.LocalPlayer);
 
             //弾を任意の秒数で消します。
-            Destroy(shell, 5.0f);
+            StartCoroutine(DestroyShellAfterTime(shell, 5));
         }
+    }
+
+    IEnumerator DestroyShellAfterTime(GameObject shell, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        PhotonNetwork.Destroy(shell);
     }
 }

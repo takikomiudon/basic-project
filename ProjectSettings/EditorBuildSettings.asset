@@ -52,6 +52,12 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
+    path: Assets/Scenes/NewStartscene.unity
+    guid: 4bb6f8cdadae9496e9a9e7fafd32b700
+  - enabled: 1
     path: Assets/Scenes/city scene.unity
     guid: edb10cbb0d25e4866ac64d8b11a5dba0
+  - enabled: 1
+    path: Assets/Scenes/Gameoverscene.unity
+    guid: 6f6cec5ca7bba4d6f8d1eedb35ce17da
   m_configObjects: {}
