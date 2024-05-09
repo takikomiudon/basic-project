@@ -525,7 +525,7 @@ VideoPlayer:
   m_AudioOutputMode: 2
   m_TargetAudioSources: []
   m_DirectAudioVolumes: []
-  m_Url: 
+  m_Url: "https://firebasestorage.googleapis.com/v0/b/basic-project-a0f20.appspot.com/o/STUnk%20de%20PANK-2.mp4?alt=media&token=b1c518e2-3a74-41b9-8c5e-b0683376b1ad"
   m_EnabledAudioTracks: 
   m_DirectAudioMutes: 
   m_ControlledAudioTrackCount: 0

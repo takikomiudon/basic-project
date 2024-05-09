@@ -254,14 +254,14 @@ RectTransform:
   m_GameObject: {fileID: 295602060}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 8.3, y: 4.1, z: 1}
+  m_LocalScale: {x: 1.6, y: 1.4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 246720307}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -2, y: -1.5828705}
+  m_AnchoredPosition: {x: -2, y: -1.5828857}
   m_SizeDelta: {x: -726, y: -298}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &295602062
@@ -317,13 +317,13 @@ VideoPlayer:
   m_TargetMaterialProperty: <noninit>
   m_RenderMode: 2
   m_AspectRatio: 2
-  m_DataSource: 0
+  m_DataSource: 1
   m_TimeUpdateMode: 2
   m_PlaybackSpeed: 1
   m_AudioOutputMode: 2
   m_TargetAudioSources: []
   m_DirectAudioVolumes: []
-  m_Url: 
+  m_Url: https://firebasestorage.googleapis.com/v0/b/basic-project-a0f20.appspot.com/o/TUnk%20de%20PANK.mp4?alt=media&token=9d8674cb-c3ee-43db-b676-256f085335d1
   m_EnabledAudioTracks: 
   m_DirectAudioMutes: 
   m_ControlledAudioTrackCount: 0
@@ -531,7 +531,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1, y: -162}
+  m_AnchoredPosition: {x: -3, y: -300}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1258730790
