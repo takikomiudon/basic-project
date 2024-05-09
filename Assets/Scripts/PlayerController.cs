@@ -73,7 +73,7 @@ public class PlayerController : Photon.Pun.MonoBehaviourPun
                 int currentValue = int.Parse(life.text);
                 life.text = (currentValue - 1).ToString();
                 int last =int.Parse(life.text);
-                if (last == 0)
+                if (last == 0 && photonView.IsMine)
                 {
                     // currentValue2が0の場合の処理
                     gotogameover(); // gotogameover関数を呼び出す
