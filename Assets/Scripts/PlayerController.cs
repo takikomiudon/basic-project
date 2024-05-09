@@ -62,9 +62,22 @@ public class PlayerController : Photon.Pun.MonoBehaviourPun
         isBlinking = false;
     }
 
+    IEnumerator TempIncreaseSpeed()
+    {
+        moveSpeed = 15.0f; // 速度を一時的に増加
+        yield return new WaitForSeconds(15); // 5秒待つ
+        moveSpeed = 5.0f; // 速度を元に戻す
+    }
+
     // 当たった時に呼ばれる関数
     void OnCollisionEnter(Collision collision)
     {
+        if (collision.gameObject.name == "Car_1(Clone)")
+        {
+            StartCoroutine(TempIncreaseSpeed()); // コルーチンを開始
+        }
+
+
         if (collision.gameObject.name == "Red Ball(Clone)")
         {
             if (!isBlinking)
