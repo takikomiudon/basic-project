@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using Photon.Pun;
 
 public class PlayerController : Photon.Pun.MonoBehaviourPun
 {
@@ -88,6 +89,8 @@ public class PlayerController : Photon.Pun.MonoBehaviourPun
                 void gotogameover() 
                 { 
                     SceneManager.LoadScene("Gameoverscene"); // Gameoversceneをロード
+                    // PhotonNetwork.Destroy(gameObject);
+                    PhotonNetwork.Disconnect();
                 }
 
                 // オブジェクトを点滅させるコルーチンを開始
