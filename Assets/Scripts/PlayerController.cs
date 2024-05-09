@@ -63,6 +63,9 @@ public class PlayerController : Photon.Pun.MonoBehaviourPun, IPunObservable
         isBlinking = false;
     }
 
+    
+   
+
     IEnumerator TempIncreaseSpeed()
     {
         moveSpeed = 15.0f; // 速度を一時的に増加
@@ -76,6 +79,12 @@ public class PlayerController : Photon.Pun.MonoBehaviourPun, IPunObservable
         if (collision.gameObject.name == "Car_1(Clone)")
         {
             StartCoroutine(TempIncreaseSpeed()); // コルーチンを開始
+        }
+
+        if (collision.gameObject.name == "SoftStar(Clone)")
+        {
+            Debug.Log("collision_star");
+            StartCoroutine(BlinkObject(10.0f)); // コルーチンを開始
         }
 
 
