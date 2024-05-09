@@ -28,8 +28,6 @@ public class ItemSpawner : MonoBehaviourPunCallbacks
 
     }
 
-
-
     //  アイテムの発生場所をランダムに生成。
     Vector3 GenerateSpawnPosition()
     {
