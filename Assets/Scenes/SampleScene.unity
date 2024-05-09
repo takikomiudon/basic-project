@@ -274,7 +274,7 @@ MeshCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 5
   m_Convex: 1
   m_CookingOptions: 30
@@ -293,6 +293,7 @@ GameObject:
   - component: {fileID: 649249293}
   - component: {fileID: 653292142}
   - component: {fileID: 653292143}
+  - component: {fileID: 653292144}
   m_Layer: 0
   m_Name: pCube8 1
   m_TagString: Untagged
@@ -412,7 +413,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32e62f69b959045618e59c46bf7613fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  renderer: {fileID: 653292141}
   life: {fileID: 269844848}
+--- !u!65 &653292144
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 651357369}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.025377985, y: 0.02547966, z: 0.013658912}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
