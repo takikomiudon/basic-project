@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using Photon.Pun;
 
 public class PlayerController : Photon.Pun.MonoBehaviourPun
 {
@@ -86,7 +87,7 @@ public class PlayerController : Photon.Pun.MonoBehaviourPun
                 int currentValue = int.Parse(life.text);
                 life.text = (currentValue - 1).ToString();
                 int last =int.Parse(life.text);
-                if (last == 0)
+                if (last == 0 && photonView.IsMine)
                 {
                     // currentValue2が0の場合の処理
                     gotogameover(); // gotogameover関数を呼び出す
@@ -101,6 +102,8 @@ public class PlayerController : Photon.Pun.MonoBehaviourPun
                 void gotogameover() 
                 { 
                     SceneManager.LoadScene("Gameoverscene"); // Gameoversceneをロード
+                    // PhotonNetwork.Destroy(gameObject);
+                    PhotonNetwork.Disconnect();
                 }
 
                 // オブジェクトを点滅させるコルーチンを開始

@@ -8,6 +8,7 @@ public class ItemSpawner : MonoBehaviourPunCallbacks
     public GameObject itemPrefab; // アイテムのプレファブ
     public float spawnInterval = 10f; // アイテムが生成される時間間隔（秒）
     private float timer;
+    private GameObject item;
 
     void Update()
     {
@@ -24,6 +25,7 @@ public class ItemSpawner : MonoBehaviourPunCallbacks
             SpawnItem();
             timer = 0;
         }
+
     }
 
     //  アイテムの発生場所をランダムに生成。
@@ -34,7 +36,7 @@ public class ItemSpawner : MonoBehaviourPunCallbacks
 
         if (x < 55)
         {
-            position = new Vector3(x - 33, 1 , -13);
+            position = new Vector3(x - 33, 1, -13);
         }
         else if (x < 100)
         {
@@ -55,7 +57,7 @@ public class ItemSpawner : MonoBehaviourPunCallbacks
     void SpawnItem()
     {
         Vector3 spawnPosition = GenerateSpawnPosition(); // ランダムなスポーン位置を取得
-        Quaternion rotation = Quaternion.Euler(45,  0, 0);  // 角度調節
+        Quaternion rotation = Quaternion.Euler(45, 0, 0);  // 角度調節
         PhotonNetwork.Instantiate(itemPrefab.name, spawnPosition, rotation);
         itemPrefab.SetActive(true);
     }
