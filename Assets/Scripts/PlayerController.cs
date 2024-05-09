@@ -6,7 +6,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using Photon.Pun;
 
-public class PlayerController : Photon.Pun.MonoBehaviourPun
+public class PlayerController : Photon.Pun.MonoBehaviourPun, IPunObservable
 {
     public GameObject canon;  //　キャノン
     public GameObject tower;  //　砲台
@@ -93,7 +93,8 @@ public class PlayerController : Photon.Pun.MonoBehaviourPun
                     gotogameover(); // gotogameover関数を呼び出す
                 }
                 else
-                { StartCoroutine(BlinkObject(2f));
+                { 
+                    StartCoroutine(BlinkObject(2f));
                     // currentValue2が0以外の場合の処理
                     // ゲームシーンをロードする処理など
                 }
@@ -113,7 +114,19 @@ public class PlayerController : Photon.Pun.MonoBehaviourPun
         }
     }
 
-
+    void IPunObservable.OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.IsWriting)
+        {
+            stream.SendNext(life.text);
+            stream.SendNext(isBlinking);
+        }
+        else
+        {
+            life.text = (string)stream.ReceiveNext();
+            isBlinking = (bool)stream.ReceiveNext();
+        }
+    }
 
     void Update()
     {
