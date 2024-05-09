@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : Photon.Pun.MonoBehaviourPun
 {
@@ -70,8 +72,26 @@ public class PlayerController : Photon.Pun.MonoBehaviourPun
                 // 名前が "name" のオブジェクトに当たった場合、TextMeshProの数値を1減らす
                 int currentValue = int.Parse(life.text);
                 life.text = (currentValue - 1).ToString();
+                int last =int.Parse(life.text);
+                if (last == 0)
+                {
+                    // currentValue2が0の場合の処理
+                    gotogameover(); // gotogameover関数を呼び出す
+                }
+                else
+                { StartCoroutine(BlinkObject(2f));
+                    // currentValue2が0以外の場合の処理
+                    // ゲームシーンをロードする処理など
+                }
+
+                // gotogameover関数の定義
+                void gotogameover() 
+                { 
+                    SceneManager.LoadScene("Gameoverscene"); // Gameoversceneをロード
+                }
+
                 // オブジェクトを点滅させるコルーチンを開始
-                StartCoroutine(BlinkObject(2f));
+               
             }
 
         }
